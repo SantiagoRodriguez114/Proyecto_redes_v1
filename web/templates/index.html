@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard - Red de Sensores</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #map { height: 350px; }
+    .card-value { font-size: 1.6rem; font-weight:700; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark mb-3">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Monitoreo Agro - Dashboard</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-md-8">
+        <div class="row" id="cards-row"></div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5>Mapa de nodos</h5>
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5>Gráfica histórica (últimos 100 puntos)</h5>
+    <canvas id="chart" height="120"></canvas>
+  </div>
+
+<script>
+const cardsRow = document.getElementById('cards-row');
+const chartCtx = document.getElementById('chart').getContext('2d');
+let chart = new Chart(chartCtx, {
+  type: 'line',
+  data: { labels: [], datasets: [] },
+  options: {
+    parsing: false,
+    normalized: true,
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { display: true } }
+  }
+});
+
+const map = L.map('map').setView([4.6, -74.1], 8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19}).addTo(map);
+const markers = {};
+
+function ensureCard(nodeId, sensor) {
+  const key = `${nodeId}__${sensor}`;
+  if (document.getElementById(key)) return;
+  const col = document.createElement('div');
+  col.className = 'col-md-6 mb-3';
+  col.innerHTML = `
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">${nodeId} — ${sensor}</h6>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="card-value" id="val_${key}">—</div>
+          <div id="status_${key}" class="badge bg-secondary">?</div>
+        </div>
+        <small id="ts_${key}" class="text-muted">sin datos</small>
+      </div>
+    </div>`;
+  col.id = key;
+  cardsRow.appendChild(col);
+}
+
+const evtSource = new EventSource("/stream");
+evtSource.onmessage = function(e) {
+  try {
+    const obj = JSON.parse(e.data);
+    if (obj.type && obj.type === 'measurement') {
+      const node = obj.nodeId || 'node';
+      const sensor = obj.sensor || 'sensor';
+      const key = `${node}__${sensor}`;
+      ensureCard(node, sensor);
+      document.getElementById(`val_${key}`).innerText = (obj.value !== null && obj.value !== undefined) ? `${obj.value} ${obj.unit||''}` : '—';
+      const statusEl = document.getElementById(`status_${key}`);
+      statusEl.innerText = obj.status || 'ok';
+      statusEl.className = 'badge ' + (obj.status === 'ok' ? 'bg-success' : obj.status === 'fault' ? 'bg-danger' : 'bg-warning');
+      document.getElementById(`ts_${key}`).innerText = new Date(obj.ts_ingest).toLocaleString();
+
+      if (obj.nodeLat && obj.nodeLon) {
+        if (!markers[node]) {
+          markers[node] = L.marker([obj.nodeLat, obj.nodeLon]).addTo(map).bindPopup(node);
+        } else {
+          markers[node].setLatLng([obj.nodeLat, obj.nodeLon]);
+        }
+      }
+      addToChart(node, sensor, obj.ts_ingest, obj.value);
+    }
+  } catch(err) {
+    console.error("Error procesando SSE:", err, e.data);
+  }
+};
+
+function addToChart(node, sensor, ts, value) {
+  const label = `${node} ${sensor}`;
+  let ds = chart.data.datasets.find(d => d.label === label);
+  if (!ds) {
+    ds = { label, data: [], parsing: false, borderWidth: 2, tension: 0.25 };
+    chart.data.datasets.push(ds);
+  }
+  ds.data.unshift({ x: ts, y: value });
+  ds.data = ds.data.slice(0, 100);
+  chart.update();
+}
+
+fetch('/api/latest').then(r=>r.json()).then(rows=>{
+  rows.forEach(r=>{
+    const obj = {
+      type: 'measurement',
+      ts_ingest: r.ts_ingest,
+      nodeId: r.nodeId,
+      sensor: r.sensor,
+      value: r.value,
+      unit: r.unit,
+      nodeLat: r.nodeLat,
+      nodeLon: r.nodeLon,
+      status: r.status
+    };
+    const ev = { data: JSON.stringify(obj) };
+    evtSource.onmessage(ev);
+  });
+}).catch(e=>console.warn("No se pudo obtener latest:", e));
+</script>
+</body>
+</html>
