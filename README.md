@@ -64,7 +64,6 @@ web/
     - Frontend que muestra el dashboard:
       - Usa Bootstrap para el layout.
       - Chart.js para gráficas.
-      - Leaflet para mapa y ubicación de nodos.
       - Se suscribe a `/stream` para recibir datos en tiempo real.
 - static/ (opcional)
   - Archivos estáticos: CSS, JS, imágenes (puede no existir si todo está inline en `index.html`).
@@ -76,7 +75,7 @@ simulator/
   - Script que simula N nodos (por defecto 4) con coordenadas distintas.
   - Publica periódicamente mensajes JSON al broker MQTT con campos:
     - node_id, timestamp, soil_moisture, temperature, solar_radiation, ph, lat, lon
-  - Topic de ejemplo (revisar el script para el exacto):
+  - Topic de ejemplo
     - `sensors/<node_id>/measurements`
 
 data_web/
@@ -112,7 +111,7 @@ Cómo ejecutar
 Requisitos:
 - Docker y Docker Compose instalados.
 
-1. Clonar el repositorio (si aún no lo tienes):
+1. Clonar el repositorio:
 ```bash
 git clone https://github.com/SantiagoRodriguez114/Proyecto_redes_v1.git
 cd Proyecto_redes_v1/red-sensores
@@ -146,16 +145,6 @@ python web/app.py
 python simulator/sim.py
 ```
 
----
-
-Variables de configuración (recomendadas)
-- FLASK_ENV=development|production
-- SECRET_KEY=...
-- MQTT_BROKER=mosquitto (nombre del servicio Docker) o IP
-- MQTT_PORT=1883
-- DB_PATH=./data_web/measurements.db
-
-(Verifica los nombres exactos de variables en `app.py` y `sim.py` si existen.)
 
 ---
 
@@ -189,24 +178,7 @@ Endpoints principales expuestos por el backend:
 Persistencia
 - SQLite en `./data_web/measurements.db` (montado como volumen para persistencia).
 - Mosquitto persiste datos en `mosquitto/data/` según `mosquitto.conf`.
-- Asegúrate de permisos adecuados en las carpetas montadas en el host.
 
 ---
 
-Solución de problemas comunes
-- No llegan mensajes al backend:
-  - Revisar logs de `web` y `mosquitto` (`docker compose logs web` / `docker compose logs mosquitto`).
-  - Comprobar que el topic publicado por el simulador coincide con el que web está suscrito.
-- La DB no se crea / permisos:
-  - Revisar permisos del volumen `data_web`.
-  - Ejecutar `docker compose down -v` y volver a subir si las migraciones/creación fallaron.
-- Puerto 5000 ocupado:
-  - Cambia el mapeo de puertos en `docker-compose.yml` o detén el proceso que lo ocupa.
 
----
-
-¿Qué modificar/añadir con facilidad?
-- Cambiar número de nodos y frecuencia en `simulator/sim.py`.
-- Añadir autenticación/TLS en `mosquitto/config/mosquitto.conf`.
-- Sustituir o ampliar el frontend en `templates/index.html` con frameworks modernos.
-- Añadir más endpoints en `web/app.py` para gestión y administración.
