@@ -5,8 +5,8 @@ import random
 import paho.mqtt.client as mqtt
 from datetime import datetime, timezone
 
-MQTT_BROKER = os.environ.get("MQTT_BROKER", "localhost")
-MQTT_PORT = int(os.environ.get("MQTT_PORT", "1883"))
+MQTT_BROKER = os.getenv("MQTT_BROKER", "localhost")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
 
 client = mqtt.Client()
 client.connect(MQTT_BROKER, MQTT_PORT, 60)

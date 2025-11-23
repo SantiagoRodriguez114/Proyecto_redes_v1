@@ -1,0 +1,5 @@
+mosquitto/data/
+mosquitto/log/
+data_web/
+__pycache__/
+*.db
