@@ -1,0 +1,28 @@
+Instalar batman en todos los pcs
+
+Ubuntu
+    
+    sudo apt install
+    sudo apr install batctl
+
+Fedora
+
+    sudo dnf install batctl
+
+Ejecutar comando para saber la interfaz de red
+
+    ip addr show
+    ip a
+
+Configurar la ip en cada 
+
+    WIFI_IFACE="wlan0"
+
+Como usar cada script
+
+    chmod +x pcX_mesh.sh
+    sudo ./pcX_mesh.sh
+
+Script para limpiar todo
+
+    sudo ./cleanup.sh
