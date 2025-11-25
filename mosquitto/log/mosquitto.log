@@ -225,3 +225,332 @@
 1764038398: New client connected from 172.18.0.3:54089 as auto-06EAEEF0-E87B-D6E0-17A6-2BF4C78BAB9E (p2, c1, k60).
 1764038398: New connection from 172.18.0.3:40945 on port 1883.
 1764038398: New client connected from 172.18.0.3:40945 as auto-68555A59-BADB-55C0-2C6A-8F0F1F7E88E2 (p2, c1, k60).
+1764041128: mosquitto version 2.0.22 starting
+1764041128: Config loaded from /mosquitto/config/mosquitto.conf.
+1764041128: Opening ipv4 listen socket on port 1883.
+1764041128: Opening ipv6 listen socket on port 1883.
+1764041128: mosquitto version 2.0.22 running
+1764041129: New connection from 172.18.0.3:36455 on port 1883.
+1764041129: New client connected from 172.18.0.3:36455 as auto-CE4CFE9F-A468-8AE5-A19E-5414FEBF79D3 (p2, c1, k60).
+1764041129: New connection from 172.18.0.3:40857 on port 1883.
+1764041129: New client connected from 172.18.0.3:40857 as auto-F9CB0BD1-A523-C504-C5E0-9701517706CA (p2, c1, k60).
+1764041133: New connection from 192.168.1.12:39507 on port 1883.
+1764041133: New client connected from 192.168.1.12:39507 as pub-nodo2 (p2, c1, k60).
+1764041134: Client pub-nodo2 closed its connection.
+1764041404: New connection from 192.168.1.12:49449 on port 1883.
+1764041404: New client connected from 192.168.1.12:49449 as pub-nodo2 (p2, c1, k60).
+1764041405: Client pub-nodo2 closed its connection.
+1764042929: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764046125: mosquitto version 2.0.22 starting
+1764046125: Config loaded from /mosquitto/config/mosquitto.conf.
+1764046125: Opening ipv4 listen socket on port 1883.
+1764046125: Opening ipv6 listen socket on port 1883.
+1764046125: mosquitto version 2.0.22 running
+1764046127: New connection from 172.18.0.3:46631 on port 1883.
+1764046127: New client connected from 172.18.0.3:46631 as auto-5DD6EC51-5257-A90B-D09C-3E14AD205786 (p2, c1, k60).
+1764046127: New connection from 172.18.0.3:44385 on port 1883.
+1764046127: New client connected from 172.18.0.3:44385 as auto-3F7D28A8-2DD3-EDE2-85F6-5FDF62336D1C (p2, c1, k60).
+1764046214: New connection from 10.10.0.3:58949 on port 1883.
+1764046214: New client connected from 10.10.0.3:58949 as pub-nodo3 (p2, c1, k60).
+1764046215: Client auto-3F7D28A8-2DD3-EDE2-85F6-5FDF62336D1C closed its connection.
+1764046215: Client auto-5DD6EC51-5257-A90B-D09C-3E14AD205786 closed its connection.
+1764046216: New connection from 172.18.0.3:45603 on port 1883.
+1764046216: New client connected from 172.18.0.3:45603 as auto-89635E3D-8C4B-AEFC-22C1-C07FAA6B7363 (p2, c1, k60).
+1764046216: New connection from 172.18.0.3:47879 on port 1883.
+1764046216: New client connected from 172.18.0.3:47879 as auto-42CFFB77-34C6-E3D8-61E0-AF33B552A607 (p2, c1, k60).
+1764046250: Client pub-nodo3 closed its connection.
+1764047252: New connection from 10.10.0.3:33179 on port 1883.
+1764047252: New client connected from 10.10.0.3:33179 as pub-nodo3 (p2, c1, k60).
+1764047309: Client pub-nodo3 closed its connection.
+1764047752: New connection from 10.10.0.4:33745 on port 1883.
+1764047752: New client connected from 10.10.0.4:33745 as pub-nodo4 (p2, c1, k60).
+1764047862: Client pub-nodo4 closed its connection.
+1764047925: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764048431: New connection from 10.10.0.2:60501 on port 1883.
+1764048431: New client connected from 10.10.0.2:60501 as pub-nodo2 (p2, c1, k60).
+1764048431: Client pub-nodo2 closed its connection.
+1764049751: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764049751: Client auto-89635E3D-8C4B-AEFC-22C1-C07FAA6B7363 has exceeded timeout, disconnecting.
+1764049751: Client auto-42CFFB77-34C6-E3D8-61E0-AF33B552A607 has exceeded timeout, disconnecting.
+1764049752: New connection from 172.18.0.3:47379 on port 1883.
+1764049752: New client connected from 172.18.0.3:47379 as auto-FD9211AF-7CB8-2D7F-4F4E-47FBDAD8774C (p2, c1, k60).
+1764049752: New connection from 172.18.0.3:41403 on port 1883.
+1764049752: New client connected from 172.18.0.3:41403 as auto-63D4BA0A-64E5-24C0-5EBD-1C8A6EF3097C (p2, c1, k60).
+1764049856: Client auto-FD9211AF-7CB8-2D7F-4F4E-47FBDAD8774C has exceeded timeout, disconnecting.
+1764049856: Client auto-63D4BA0A-64E5-24C0-5EBD-1C8A6EF3097C has exceeded timeout, disconnecting.
+1764049857: New connection from 172.18.0.3:45605 on port 1883.
+1764049857: New client connected from 172.18.0.3:45605 as auto-AB612841-1CAF-FEF5-816A-58582DF8BFB7 (p2, c1, k60).
+1764049857: New connection from 172.18.0.3:41491 on port 1883.
+1764049857: New client connected from 172.18.0.3:41491 as auto-62065425-4889-2466-4A76-C0E100C2C43F (p2, c1, k60).
+1764049947: Client auto-AB612841-1CAF-FEF5-816A-58582DF8BFB7 has exceeded timeout, disconnecting.
+1764049947: Client auto-62065425-4889-2466-4A76-C0E100C2C43F has exceeded timeout, disconnecting.
+1764049948: New connection from 172.18.0.3:58229 on port 1883.
+1764049948: New connection from 172.18.0.3:32935 on port 1883.
+1764049948: New client connected from 172.18.0.3:58229 as auto-D6C52EE9-45E8-71B6-1218-B21294B03540 (p2, c1, k60).
+1764049948: New client connected from 172.18.0.3:32935 as auto-DE5A2B49-439B-4231-CC2E-C9786313502C (p2, c1, k60).
+1764050151: mosquitto version 2.0.22 terminating
+1764050151: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1764085029: mosquitto version 2.0.22 starting
+1764085029: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085029: Opening ipv4 listen socket on port 1883.
+1764085029: Opening ipv6 listen socket on port 1883.
+1764085029: Opening ipv4 listen socket on port 1883.
+1764085029: Error: Address not available
+1764085030: mosquitto version 2.0.22 starting
+1764085030: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085030: Opening ipv4 listen socket on port 1883.
+1764085030: Opening ipv6 listen socket on port 1883.
+1764085030: Opening ipv4 listen socket on port 1883.
+1764085030: Error: Address not available
+1764085031: mosquitto version 2.0.22 starting
+1764085031: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085031: Opening ipv4 listen socket on port 1883.
+1764085031: Opening ipv6 listen socket on port 1883.
+1764085031: Opening ipv4 listen socket on port 1883.
+1764085031: Error: Address not available
+1764085031: mosquitto version 2.0.22 starting
+1764085031: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085031: Opening ipv4 listen socket on port 1883.
+1764085031: Opening ipv6 listen socket on port 1883.
+1764085031: Opening ipv4 listen socket on port 1883.
+1764085031: Error: Address not available
+1764085033: mosquitto version 2.0.22 starting
+1764085033: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085033: Opening ipv4 listen socket on port 1883.
+1764085033: Opening ipv6 listen socket on port 1883.
+1764085033: Opening ipv4 listen socket on port 1883.
+1764085033: Error: Address not available
+1764085035: mosquitto version 2.0.22 starting
+1764085035: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085035: Opening ipv4 listen socket on port 1883.
+1764085035: Opening ipv6 listen socket on port 1883.
+1764085035: Opening ipv4 listen socket on port 1883.
+1764085035: Error: Address not available
+1764085038: mosquitto version 2.0.22 starting
+1764085038: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085038: Opening ipv4 listen socket on port 1883.
+1764085038: Opening ipv6 listen socket on port 1883.
+1764085038: Opening ipv4 listen socket on port 1883.
+1764085038: Error: Address not available
+1764085045: mosquitto version 2.0.22 starting
+1764085045: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085045: Opening ipv4 listen socket on port 1883.
+1764085045: Opening ipv6 listen socket on port 1883.
+1764085045: Opening ipv4 listen socket on port 1883.
+1764085045: Error: Address not available
+1764085059: mosquitto version 2.0.22 starting
+1764085059: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085059: Opening ipv4 listen socket on port 1883.
+1764085059: Opening ipv6 listen socket on port 1883.
+1764085059: Opening ipv4 listen socket on port 1883.
+1764085059: Error: Address not available
+1764085085: mosquitto version 2.0.22 starting
+1764085085: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085085: Opening ipv4 listen socket on port 1883.
+1764085085: Opening ipv6 listen socket on port 1883.
+1764085085: Opening ipv4 listen socket on port 1883.
+1764085085: Error: Address not available
+1764085137: mosquitto version 2.0.22 starting
+1764085137: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085137: Opening ipv4 listen socket on port 1883.
+1764085137: Opening ipv6 listen socket on port 1883.
+1764085137: Opening ipv4 listen socket on port 1883.
+1764085137: Error: Address not available
+1764085198: mosquitto version 2.0.22 starting
+1764085198: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085198: Opening ipv4 listen socket on port 1883.
+1764085198: Opening ipv6 listen socket on port 1883.
+1764085198: Opening ipv4 listen socket on port 1883.
+1764085198: Error: Address not available
+1764085258: mosquitto version 2.0.22 starting
+1764085258: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085258: Opening ipv4 listen socket on port 1883.
+1764085258: Opening ipv6 listen socket on port 1883.
+1764085258: Opening ipv4 listen socket on port 1883.
+1764085258: Error: Address not available
+1764085319: mosquitto version 2.0.22 starting
+1764085319: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085319: Opening ipv4 listen socket on port 1883.
+1764085319: Opening ipv6 listen socket on port 1883.
+1764085319: Opening ipv4 listen socket on port 1883.
+1764085319: Error: Address not available
+1764085380: mosquitto version 2.0.22 starting
+1764085380: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085380: Opening ipv4 listen socket on port 1883.
+1764085380: Opening ipv6 listen socket on port 1883.
+1764085380: Opening ipv4 listen socket on port 1883.
+1764085380: Error: Address not available
+1764085440: mosquitto version 2.0.22 starting
+1764085440: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085440: Opening ipv4 listen socket on port 1883.
+1764085440: Opening ipv6 listen socket on port 1883.
+1764085440: Opening ipv4 listen socket on port 1883.
+1764085440: Error: Address not available
+1764085501: mosquitto version 2.0.22 starting
+1764085501: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085501: Opening ipv4 listen socket on port 1883.
+1764085501: Opening ipv6 listen socket on port 1883.
+1764085501: Opening ipv4 listen socket on port 1883.
+1764085501: Error: Address not available
+1764085561: mosquitto version 2.0.22 starting
+1764085561: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085561: Opening ipv4 listen socket on port 1883.
+1764085561: Opening ipv6 listen socket on port 1883.
+1764085561: Opening ipv4 listen socket on port 1883.
+1764085561: Error: Address not available
+1764085622: mosquitto version 2.0.22 starting
+1764085622: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085622: Opening ipv4 listen socket on port 1883.
+1764085622: Opening ipv6 listen socket on port 1883.
+1764085622: Opening ipv4 listen socket on port 1883.
+1764085622: Error: Address not available
+1764085683: mosquitto version 2.0.22 starting
+1764085683: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085683: Opening ipv4 listen socket on port 1883.
+1764085683: Opening ipv6 listen socket on port 1883.
+1764085683: Opening ipv4 listen socket on port 1883.
+1764085683: Error: Address not available
+1764085743: mosquitto version 2.0.22 starting
+1764085743: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085743: Opening ipv4 listen socket on port 1883.
+1764085743: Opening ipv6 listen socket on port 1883.
+1764085743: Opening ipv4 listen socket on port 1883.
+1764085743: Error: Address not available
+1764085804: mosquitto version 2.0.22 starting
+1764085804: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085804: Opening ipv4 listen socket on port 1883.
+1764085804: Opening ipv6 listen socket on port 1883.
+1764085804: Opening ipv4 listen socket on port 1883.
+1764085804: Error: Address not available
+1764085865: mosquitto version 2.0.22 starting
+1764085865: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085865: Opening ipv4 listen socket on port 1883.
+1764085865: Opening ipv6 listen socket on port 1883.
+1764085865: Opening ipv4 listen socket on port 1883.
+1764085865: Error: Address not available
+1764085925: mosquitto version 2.0.22 starting
+1764085925: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085925: Opening ipv4 listen socket on port 1883.
+1764085925: Opening ipv6 listen socket on port 1883.
+1764085925: Opening ipv4 listen socket on port 1883.
+1764085925: Error: Address not available
+1764085986: mosquitto version 2.0.22 starting
+1764085986: Config loaded from /mosquitto/config/mosquitto.conf.
+1764085986: Opening ipv4 listen socket on port 1883.
+1764085986: Opening ipv6 listen socket on port 1883.
+1764085986: Opening ipv4 listen socket on port 1883.
+1764085986: Error: Address not available
+1764086047: mosquitto version 2.0.22 starting
+1764086047: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086047: Opening ipv4 listen socket on port 1883.
+1764086047: Opening ipv6 listen socket on port 1883.
+1764086047: Opening ipv4 listen socket on port 1883.
+1764086047: Error: Address not available
+1764086107: mosquitto version 2.0.22 starting
+1764086107: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086107: Opening ipv4 listen socket on port 1883.
+1764086107: Opening ipv6 listen socket on port 1883.
+1764086107: Opening ipv4 listen socket on port 1883.
+1764086107: Error: Address not available
+1764086168: mosquitto version 2.0.22 starting
+1764086168: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086168: Opening ipv4 listen socket on port 1883.
+1764086168: Opening ipv6 listen socket on port 1883.
+1764086168: Opening ipv4 listen socket on port 1883.
+1764086168: Error: Address not available
+1764086229: mosquitto version 2.0.22 starting
+1764086229: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086229: Opening ipv4 listen socket on port 1883.
+1764086229: Opening ipv6 listen socket on port 1883.
+1764086229: Opening ipv4 listen socket on port 1883.
+1764086229: Error: Address not available
+1764086289: mosquitto version 2.0.22 starting
+1764086289: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086289: Opening ipv4 listen socket on port 1883.
+1764086289: Opening ipv6 listen socket on port 1883.
+1764086289: Opening ipv4 listen socket on port 1883.
+1764086289: Error: Address not available
+1764086350: mosquitto version 2.0.22 starting
+1764086350: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086350: Opening ipv4 listen socket on port 1883.
+1764086350: Opening ipv6 listen socket on port 1883.
+1764086350: Opening ipv4 listen socket on port 1883.
+1764086350: Error: Address not available
+1764086400: mosquitto version 2.0.22 starting
+1764086400: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086400: Opening ipv4 listen socket on port 1883.
+1764086400: Opening ipv6 listen socket on port 1883.
+1764086400: Opening ipv4 listen socket on port 1883.
+1764086400: Error: Address not available
+1764086401: mosquitto version 2.0.22 starting
+1764086401: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086401: Opening ipv4 listen socket on port 1883.
+1764086401: Opening ipv6 listen socket on port 1883.
+1764086401: Opening ipv4 listen socket on port 1883.
+1764086401: Error: Address not available
+1764086402: mosquitto version 2.0.22 starting
+1764086402: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086402: Opening ipv4 listen socket on port 1883.
+1764086402: Opening ipv6 listen socket on port 1883.
+1764086402: Opening ipv4 listen socket on port 1883.
+1764086402: Error: Address not available
+1764086403: mosquitto version 2.0.22 starting
+1764086403: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086403: Opening ipv4 listen socket on port 1883.
+1764086403: Opening ipv6 listen socket on port 1883.
+1764086403: Opening ipv4 listen socket on port 1883.
+1764086403: Error: Address not available
+1764086404: mosquitto version 2.0.22 starting
+1764086404: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086404: Opening ipv4 listen socket on port 1883.
+1764086404: Opening ipv6 listen socket on port 1883.
+1764086404: Opening ipv4 listen socket on port 1883.
+1764086404: Error: Address not available
+1764086406: mosquitto version 2.0.22 starting
+1764086406: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086406: Opening ipv4 listen socket on port 1883.
+1764086406: Opening ipv6 listen socket on port 1883.
+1764086406: Opening ipv4 listen socket on port 1883.
+1764086406: Error: Address not available
+1764086410: mosquitto version 2.0.22 starting
+1764086410: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086410: Opening ipv4 listen socket on port 1883.
+1764086410: Opening ipv6 listen socket on port 1883.
+1764086410: Opening ipv4 listen socket on port 1883.
+1764086410: Error: Address not available
+1764086417: mosquitto version 2.0.22 starting
+1764086417: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086417: Opening ipv4 listen socket on port 1883.
+1764086417: Opening ipv6 listen socket on port 1883.
+1764086417: Opening ipv4 listen socket on port 1883.
+1764086417: Error: Address not available
+1764086430: mosquitto version 2.0.22 starting
+1764086430: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086430: Opening ipv4 listen socket on port 1883.
+1764086430: Opening ipv6 listen socket on port 1883.
+1764086430: Opening ipv4 listen socket on port 1883.
+1764086430: Error: Address not available
+1764086457: mosquitto version 2.0.22 starting
+1764086457: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086457: Opening ipv4 listen socket on port 1883.
+1764086457: Opening ipv6 listen socket on port 1883.
+1764086457: Opening ipv4 listen socket on port 1883.
+1764086457: Error: Address not available
+1764086774: mosquitto version 2.0.22 starting
+1764086774: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086774: Opening ipv4 listen socket on port 1883.
+1764086774: Opening ipv6 listen socket on port 1883.
+1764086774: Opening ipv4 listen socket on port 1883.
+1764086774: Error: Address not available
+1764086834: mosquitto version 2.0.22 starting
+1764086834: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086834: Opening ipv4 listen socket on port 1883.
+1764086834: Opening ipv6 listen socket on port 1883.
+1764086834: Opening ipv4 listen socket on port 1883.
+1764086834: Error: Address not available
+1764086895: mosquitto version 2.0.22 starting
+1764086895: Config loaded from /mosquitto/config/mosquitto.conf.
+1764086895: Opening ipv4 listen socket on port 1883.
+1764086895: Opening ipv6 listen socket on port 1883.
+1764086895: Opening ipv4 listen socket on port 1883.
+1764086895: Error: Address not available
