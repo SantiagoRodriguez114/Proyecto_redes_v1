@@ -2,11 +2,19 @@ import json
 import sqlite3
 import threading
 from flask import Flask, render_template, g, jsonify
-import paho.mqtt.client as mqtt
+from flask_socketio import SocketIO
 
-# --- Configuración básica ---
+import paho.mqtt.client as mqtt
+import mqtt_bridge  # nuevo archivo
+
+# ---------------------------------------------------
+# FLASK + SOCKET.IO
+# ---------------------------------------------------
 app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*")
+
 DATABASE = "data.db"
+
 
 # ============================
 # GESTIÓN DE BASE DE DATOS
@@ -19,14 +27,15 @@ def get_db():
         db.row_factory = sqlite3.Row
     return db
 
+
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, "_database", None)
     if db is not None:
         db.close()
 
+
 def ensure_database():
-    """Crea la base de datos y tabla si no existen."""
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
     cursor.execute("""
@@ -44,10 +53,10 @@ def ensure_database():
     """)
     db.commit()
     db.close()
-    print("Base de datos verificada / creada correctamente.")
+    print("Base de datos lista.")
+
 
 def insert_data(data):
-    """Inserta un registro en la tabla sensor_data."""
     try:
         db = get_db()
         cursor = db.cursor()
@@ -66,46 +75,61 @@ def insert_data(data):
         ))
         db.commit()
     except Exception as e:
-        print(f"Error insertando en la base de datos: {e}")
+        print("Error insertando:", e)
+
 
 # ============================
-# MQTT CLIENTE
+# MQTT → BASE DE DATOS
 # ============================
 
-MQTT_BROKER = "mosquitto"  # nombre del servicio en docker-compose
+MQTT_BROKER = "mosquitto"
 MQTT_PORT = 1883
-MQTT_TOPIC = "cultivo/loteA/+/data"
+MQTT_TOPIC = "agro/+/telemetry"
+
 
 def on_connect(client, userdata, flags, rc):
-    print("Conectado al broker MQTT:", rc)
+    print("MQTT conectado:", rc)
     client.subscribe(MQTT_TOPIC)
+
 
 def on_message(client, userdata, msg):
     try:
-        data = json.loads(msg.payload.decode())
+        raw = json.loads(msg.payload.decode())
+
+        data = {
+            "ts_device": raw["_meta"]["timestamp"],
+            "nodeId": raw["_meta"]["node_id"],
+            "sensor": "temp",
+            "value": raw["temp"],
+            "unit": "C",
+            "nodeLat": None,
+            "nodeLon": None,
+            "status": "OK"
+        }
+
         with app.app_context():
             insert_data(data)
-        print(f"[MQTT] Guardado en DB: {data}")
+
+
+        print("[MQTT→DB] Guardado:", data)
+
     except Exception as e:
-        print(f"Error procesando mensaje MQTT: {e}")
+        print("Error MQTT→DB:", e)
+
 
 def start_mqtt_background():
-    """Inicia el hilo MQTT incluso si Flask corre bajo Gunicorn."""
     def mqtt_thread():
         client = mqtt.Client()
         client.on_connect = on_connect
         client.on_message = on_message
-        try:
-            client.connect(MQTT_BROKER, MQTT_PORT, 60)
-            print("Cliente MQTT iniciado correctamente.")
-            client.loop_forever()
-        except Exception as e:
-            print(f"Error conectando al broker MQTT: {e}")
+        client.connect(MQTT_BROKER, MQTT_PORT, 60)
+        client.loop_forever()
 
     threading.Thread(target=mqtt_thread, daemon=True).start()
 
+
 # ============================
-# RUTAS FLASK
+# RUTAS
 # ============================
 
 @app.route("/")
@@ -116,6 +140,7 @@ def index():
     rows = cursor.fetchall()
     return render_template("index.html", rows=rows)
 
+
 @app.route("/api/data")
 def api_data():
     db = get_db()
@@ -124,11 +149,16 @@ def api_data():
     data = [dict(row) for row in cursor.fetchall()]
     return jsonify(data)
 
+
 # ============================
-# INICIALIZACIÓN GLOBAL
+# INICIO GLOBAL
 # ============================
 
-# Esto se ejecuta tanto con Gunicorn como con python app.py
 ensure_database()
 start_mqtt_background()
-print("Flask app inicializada correctamente.")
+mqtt_bridge.start_bridge(socketio)
+
+print("Flask con WebSocket iniciado correctamente.")
+
+if __name__ == "__main__":
+    socketio.run(app, host="0.0.0.0", port=5000)

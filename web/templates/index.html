@@ -151,6 +151,23 @@
     <div class="footer">
         Proyecto: <strong>Red de Sensores Ad Hoc para Agricultura</strong> — Universidad Sergio Arboleda
     </div>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <script>
+        console.log("Conectando WebSocket...");
+        const socket = io();
+
+        socket.on("new_measurement", data => {
+            console.log("Nuevo dato recibido en tiempo real:", data);
+
+            // Agregar el nuevo valor al inicio
+            allData.unshift(data);
+
+            // Actualizar UI sin esperar los 5 segundos
+            renderNodeOptions(allData);
+            renderDashboard();
+        });
+    </script>
 
     <script>
         let chart;

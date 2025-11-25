@@ -2,17 +2,24 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# dependencias del sistema
-RUN apt-get update && apt-get install -y build-essential gcc && rm -rf /var/lib/apt/lists/*
-
+# Copiar requirements primero (para hacer caching correcto)
 COPY requirements.txt /app/
+
+# Instalar dependencias del sistema necesarias para gevent
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libffi-dev \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar dependencias Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py /app/
-COPY templates /app/templates
+# Copiar resto del código
+COPY . /app/
 
-# carpeta data (sqlite) montada por docker-compose en /data
-VOLUME ["/data"]
-
+# Puerto de Flask
 EXPOSE 5000
-CMD ["gunicorn", "-w", "1", "-k", "gevent", "-b", "0.0.0.0:5000", "app:app"]
+
+# Ejecutar con gunicorn + gevent
+CMD ["gunicorn", "--worker-class", "gevent", "--workers", "1", "--bind", "0.0.0.0:5000", "app:app"]
